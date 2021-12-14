@@ -12,7 +12,7 @@ import (
 func TestDateHistogramAggregationLegacyInterval(t *testing.T) {
 	agg := NewDateHistogramAggregation().
 		Field("date").
-		Interval("week").
+		Interval(3600).
 		Format("yyyy-MM").
 		TimeZone("UTC").
 		Offset("+6h")

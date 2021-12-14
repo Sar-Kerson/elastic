@@ -14,7 +14,7 @@ type DateHistogramAggregation struct {
 	subAggregations map[string]Aggregation
 	meta            map[string]interface{}
 
-	interval          string
+	interval          int64
 	fixedInterval     string
 	calendarInterval  string
 	order             string
@@ -70,7 +70,7 @@ func (a *DateHistogramAggregation) Meta(metaData map[string]interface{}) *DateHi
 // See https://www.elastic.co/guide/en/elasticsearch/reference/7.4/search-aggregations-bucket-datehistogram-aggregation.html
 //
 // Deprecated: This field will be removed in the future.
-func (a *DateHistogramAggregation) Interval(interval string) *DateHistogramAggregation {
+func (a *DateHistogramAggregation) Interval(interval int64) *DateHistogramAggregation {
 	a.interval = interval
 	return a
 }
@@ -274,9 +274,7 @@ func (a *DateHistogramAggregation) Source() (interface{}, error) {
 		opts["missing"] = a.missing
 	}
 
-	if s := a.interval; s != "" {
-		opts["interval"] = s
-	}
+	opts["interval"] = a.interval
 	if s := a.fixedInterval; s != "" {
 		opts["fixed_interval"] = s
 	}

@@ -5,7 +5,6 @@ go 1.14
 require (
 	github.com/aws/aws-sdk-go v1.38.3
 	github.com/fortytw2/leaktest v1.3.0
-	github.com/go-sql-driver/mysql v1.5.0 // indirect
 	github.com/google/go-cmp v0.5.5
 	github.com/mailru/easyjson v0.7.7
 	github.com/opentracing/opentracing-go v1.2.0
